@@ -1,5 +1,20 @@
 # @neta-art/cohub-cli
 
+## 10.30.0
+
+### Minor Changes
+
+- c3ad9c9: Board items take `depth`: `lift`, `tilt`, `spin`, `bend` (`wave`, `cloth`, `curl`, or `custom` GLSL a script module exports as `bend`), `shade`, `shadow` and a `back` item. A lifted item draws as a live picture in one shared PixiJS 3D view above the Board, with map-like perspective and a soft shadow; pointers, script hit regions and selection act on what they touch in it. A 3D model with `props.model.display: "object"` rests on the Board as a lit object among lifted items. Depth animates by path and through `ctx.present`, and scripts get the clock time an event arrives at. `@neta-art/cohub/board/render` exports `loadBoardDepthEngine`; `renderBoardExport` takes a `depth` stage; the editor adds `visualBounds` and `setPickScope`. The CLI exports depth in local Chrome, frames lifted items in whole-board exports, reports `depth` in `boards inspect` (`--view`), and adds `boards schema depth`, the presets `flip`, `lift`, `land`, `toss`, `sway`, `wave` and `curl`, and `boards examples depth`. Skinned models without normals now light correctly.
+- 597cdf4: Local Boards: where no Space is targeted, `boards create` writes the whole Board into the `.board` file, and every Board command tells it from a Space's by content. `boards create`, `get`, `apply`, `inspect`, `frames`, `export`, `simulate` and `history` work on the file, with media and script paths relative to its folder, a lock around every write and a history beside it. `boards open <file>` shows a Space Board on the Cohub desktop and serves a local one on 127.0.0.1 with the web Board panel; edits there and from the CLI merge live, and pasted images are saved to the Board's `assets/` folder.
+
+### Patch Changes
+
+- e2cf22b: Dependency refresh. Board script module analysis now runs on es-module-lexer 3 without changing the imports Board scripts accept, and the CLI ships updated sharp and canvas bindings.
+- Updated dependencies [c3ad9c9]
+- Updated dependencies [e2cf22b]
+- Updated dependencies [49317eb]
+  - @neta-art/cohub@13.22.0
+
 ## 10.29.1
 
 ### Patch Changes
